@@ -1,10 +1,17 @@
-import "./styles.css";
+import './styles.css';
+import books from '../data/books.json';
+import BookList from './BookList';
+
+const initialBooks = books.map((book) => ({
+  ...book,
+  status: "N/A"
+}));
 
 export default function App() {
   return (
     <main>
       <h1>Your application starts here</h1>
-      {/* Build your own components, state, routes where required, and interactions. */}
+      <BookList books={initialBooks} />
     </main>
   );
 }
