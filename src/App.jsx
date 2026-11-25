@@ -91,7 +91,7 @@ function handleAddBook(newBook){
 
   return (
     <main>
-      <Header title="Your reading journey begins here" bookCount={books.length} />
+      <Header bookCount={books.length} />
       <BookForm
         onAddBook={handleAddBook}
       />
