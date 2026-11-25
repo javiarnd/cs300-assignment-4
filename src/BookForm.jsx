@@ -63,7 +63,7 @@ function BookForm({ onAddBook }){
         onChange={(event) => setTitle(event.target.value)}
       />
       {errors.title && <p className="error">{errors.title}</p>}
-
+      <br></br>
       <label htmlFor="creator">Author</label>
       <input
         id="creator"
@@ -72,7 +72,7 @@ function BookForm({ onAddBook }){
         onChange={(event) => setCreator(event.target.value)}
       />
       {errors.creator && <p className="error">{errors.creator}</p>}
-
+      <br></br>
       <label htmlFor="category">Genre</label>
       <input
         id="category"
@@ -80,7 +80,7 @@ function BookForm({ onAddBook }){
         value={category}
         onChange={(event) => setCategory(event.target.value)}
       />
-
+      <br></br>
       <label htmlFor="minutes">Minutes</label>
       <input
         id="minutes"
@@ -89,14 +89,14 @@ function BookForm({ onAddBook }){
         onChange={(event) => setMinutes(event.target.value)}
       />
       {errors.minutes && <p className="error">{errors.minutes}</p>}
-
+      <br></br>
       <label htmlFor="description">Description</label>
       <textarea
         id="description"
         value={description}
         onChange={(event) => setDescription(event.target.value)}
       />
-
+      <br></br>
       <button type="submit">Add Book</button>
     </form>
   );

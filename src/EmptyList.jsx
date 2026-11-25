@@ -1,9 +1,18 @@
-function EmptyList({ onAddClick }){
+function EmptyList({ isFiltering, onAddClick }){
+    if (isFiltering) {
+        return (
+            <article className="empty-list">
+                <h2>No books match your search</h2>
+                <p>Try a different title or author.</p>
+            </article>
+        );
+    }
+    
     return (
     <article className="empty-list">
         <h2>No books currently in your list</h2>
         <button type="button" onClick={onAddClick}>
-            Click To Add More
+            Add your first book
         </button>
     </article>
     )

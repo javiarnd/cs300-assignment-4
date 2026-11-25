@@ -1,9 +1,9 @@
 import BookCard from './BookCard.jsx';
 import EmptyList from './EmptyList.jsx';
 
-function BookList({books, onRemove, onToggleStatus, onAddClick}) {
+function BookList({books, isFiltering, onRemove, onToggleStatus, onAddClick}) {
     if(books.length === 0){
-        return <EmptyList onAddClick={onAddClick} />;
+        return <EmptyList isFiltering={isFiltering} onAddClick={onAddClick} />;
     }
 
     return (

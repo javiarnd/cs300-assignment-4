@@ -3,15 +3,52 @@ import books from '../data/books.json';
 import BookList from './BookList';
 import { useState } from 'react';
 import BookForm from './BookForm';
+import SearchFilter from './SearchFilter';
+import Header from './Header';
+import emptyData from '../data/empty.json';
+import incompleteData from '../data/incomplete.json';
+import boundaryData from '../data/boundary-records.json';
 
-const initialBooks = books.map((book) => ({
-  ...book,
-  status: "To Read"
-}));
+//const sourceData = books;
+//const sourceData = emptyData;       
+//const sourceData = incompleteData;  
+const sourceData = boundaryData;    
+
+function toTitleCase(text) {
+  return text.trim().toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+}
+
+function cleanBook(book) {
+  const minutes = Number(book.minutes);
+
+  return {
+    id: book.id,
+    title: toTitleCase(String(book.title ?? '')) || 'Untitled book',
+    creator: toTitleCase(String(book.creator ?? '')) || 'Unknown author',
+    category: toTitleCase(String(book.category ?? '')) || 'General',
+    minutes: Number.isInteger(minutes) && minutes > 0 ? minutes : 'Unknown',
+    description: String(book.description ?? '').trim() || 'No description provided.',
+    status: 'To Read',
+  };
+}
+
+
+const initialBooks = sourceData.map(cleanBook);
 
 export default function App() {
 
 const [books, setBooks] = useState(initialBooks);
+const [searchText, setSearchText] = useState('');
+
+const search = searchText.trim().toLowerCase();
+  const visibleBooks = books.filter((book) =>
+    (book.title || '').toLowerCase().includes(search) ||
+    (book.creator || '').toLowerCase().includes(search)
+  );
+
+function handleFocusForm() {
+  document.getElementById('title').focus();
+}
 
 function handleRemoveBook(id) {
   setBooks(books.filter((book) => book.id !== id));
@@ -55,14 +92,19 @@ function handleAddBook(newBook){
 
   return (
     <main>
-      <h1>Your reading journey begins here</h1>
+      <Header title="Your reading journey begins here" bookCount={books.length} />
       <BookForm
         onAddBook={handleAddBook}
       />
+      <SearchFilter
+      searchText={searchText} onSearchChange={setSearchText} 
+      />
       <BookList 
-        books={books}
+        books={visibleBooks}
+        isFiltering={search !== ''}
         onRemove={handleRemoveBook}
         onToggleStatus={handleToggleStatus} 
+        onAddClick={handleFocusForm}
       />
     </main>
   );
