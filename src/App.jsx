@@ -9,10 +9,10 @@ import emptyData from '../data/empty.json';
 import incompleteData from '../data/incomplete.json';
 import boundaryData from '../data/boundary-records.json';
 
-//const sourceData = books;
+const sourceData = books;
 //const sourceData = emptyData;       
 //const sourceData = incompleteData;  
-const sourceData = boundaryData;    
+//const sourceData = boundaryData;    
 
 function toTitleCase(text) {
   return text.trim().toLowerCase().split(' ').map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
@@ -23,7 +23,7 @@ function cleanBook(book) {
 
   return {
     id: book.id,
-    title: toTitleCase(String(book.title ?? '')) || 'Untitled book',
+    title: toTitleCase(String(book.title ?? '')) || 'Untitled Book',
     creator: toTitleCase(String(book.creator ?? '')) || 'Unknown author',
     category: toTitleCase(String(book.category ?? '')) || 'General',
     minutes: Number.isInteger(minutes) && minutes > 0 ? minutes : 'Unknown',
@@ -31,7 +31,6 @@ function cleanBook(book) {
     status: 'To Read',
   };
 }
-
 
 const initialBooks = sourceData.map(cleanBook);
 
@@ -81,10 +80,10 @@ function getNextBookId(currentBooks) {
 }
 
 function handleAddBook(newBook){
-  const bookWithId = {
+  const bookWithId = cleanBook({  //runs through clean book, but will clean things like iPhone and McDonald
     ...newBook,
     id: getNextBookId(books),
-  };
+  });
   setBooks([bookWithId, ...books]);
 }
 
