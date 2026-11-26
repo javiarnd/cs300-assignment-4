@@ -98,7 +98,7 @@ main {
     display: block;
     font-weight: 600;
     margin-top: 0.75rem;
-    font-size: .7rem;
+    font-size: .85rem;
     margin-bottom: .1rem;
 }
 
@@ -169,6 +169,7 @@ input, textarea {
     display: block;
     font-weight: 600;
     margin-bottom: 0.75rem;
+    font-size: 1.2rem;
 }
 
 .book-card p {
