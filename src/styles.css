@@ -124,6 +124,7 @@ button {
     padding: .3rem 1.2rem;
     border: 1px solid #333;
     border-radius: 5px;
+    background-color: #f6f7f9;
     color: #333;
     cursor: pointer;
     transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .1s ease;
@@ -151,7 +152,7 @@ button:active {
 input, textarea {
     width: 100%;
     padding: 0.5rem;
-    font-style: "Google Sans", sans-serif;
+    font-family: "Google Sans", sans-serif;
     border: 1px solid #8a94a0;
 }
 
