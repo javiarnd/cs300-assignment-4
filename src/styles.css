@@ -183,5 +183,11 @@ input, textarea {
     margin: 0 0 1rem;
 }
 
+.error {
+    font-size: 0.85rem;
+    color: indianred;
+}
+
+
 
 
