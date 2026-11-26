@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FormInput from './FormInput';
 
 function BookForm({ onAddBook }){
     const [title, setTitle] = useState('');
@@ -23,7 +24,7 @@ function BookForm({ onAddBook }){
 
         const minutesRead = Number(minutes);
         if (!minutes.trim() || !Number.isInteger(minutesRead) || minutesRead <= 0) {
-            nextErrors.minutes = 'Enter a valid number';
+            nextErrors.minutes = 'Enter a valid number.';
         }
 
         if (Object.keys(nextErrors).length > 0) {
@@ -53,51 +54,23 @@ function BookForm({ onAddBook }){
 
     return (
     <form className="book-form" onSubmit={handleSubmit} noValidate>
-      <h2>Add a book to your reading list.</h2>
-
-      <label htmlFor="title">Title</label>
-      <input
-        id="title"
-        type="text"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      {errors.title && <p className="error">{errors.title}</p>}
-
-      <label htmlFor="creator">Author</label>
-      <input
-        id="creator"
-        type="text"
-        value={creator}
-        onChange={(event) => setCreator(event.target.value)}
-      />
-      {errors.creator && <p className="error">{errors.creator}</p>}
-
-      <label htmlFor="category">Genre</label>
-      <input
-        id="category"
-        type="text"
-        value={category}
-        onChange={(event) => setCategory(event.target.value)}
-      />
-
-      <label htmlFor="minutes">Minutes</label>
-      <input
-        id="minutes"
-        type="number"
-        value={minutes}
-        onChange={(event) => setMinutes(event.target.value)}
-      />
-      {errors.minutes && <p className="error">{errors.minutes}</p>}
-
-      <label htmlFor="description">Description</label>
-      <textarea
-        id="description"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
-
-      <button type="submit">Add Book</button>
+        <h2>Add a book to your reading list.</h2>
+        <FormInput id="title" label="Title" value={title} onChange={setTitle} error={errors.title} />
+        <br></br>
+        <FormInput id="creator" label="Author" value={creator} onChange={setCreator} error={errors.creator} />
+        <br></br>
+        <FormInput id="category" label="Genre" value={category} onChange={setCategory} />
+        <br></br>
+        <FormInput id="minutes" label="Minutes" type="number" value={minutes} onChange={setMinutes} error={errors.minutes} />
+        <br></br>
+        <label htmlFor="description">Description</label>
+        <textarea
+            id="description"
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+        />
+        <br></br>
+        <button type="submit">Add Book</button>
     </form>
   );
 }
