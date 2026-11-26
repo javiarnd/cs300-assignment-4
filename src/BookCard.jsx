@@ -17,7 +17,7 @@ function BookCard({ book, onRemove, onToggleStatus }){
         {book.status === "To Read" ? "Mark as Read" : "Mark as To Read"}
       </button>
       <button type="button" onClick={() => onRemove(book.id)}>
-        Remove From Library
+        Remove
       </button>
       </div>
     </article>

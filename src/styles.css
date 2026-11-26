@@ -95,21 +95,28 @@ main {
 }
 
 .book-form label {
+    display: block;
+    font-weight: 600;
+    margin-top: 0.75rem;
     font-size: .7rem;
-    font-weight: 100;
     margin-bottom: .1rem;
 }
 
 .book-form input {
     height: 1.5rem;
+    color: #333;
+    background-color: #f6f7f9;
 }
 
 .book-form textarea {
     resize: none;
     height: 3rem;
+    color: #333;
+    background-color: #f6f7f9;
+    font-family: "Google Sans", sans-serif;
 }
 
-.book-form button {
+button {
     font-family: "Google Sans", sans-serif;
     font-size: .8rem;
     letter-spacing: .05em;
@@ -122,20 +129,18 @@ main {
     transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .1s ease;
 }
 
-.book-form button:hover {
+button:hover {
     background-color: #8a94a0;
     color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
 }
 
-.book-form button:active {
+button:active {
     transform: translateY(1px);
     box-shadow: none;
 }   
 
-.search-filter,
-.book-card,
-.empty-list {
+.search-filter, .book-card, .empty-list {
     background: #fff;
     border: 1px solid #d5d9df;
     border-radius: 8px;
@@ -143,16 +148,39 @@ main {
     margin-bottom: 1rem;
 }
 
-label {
-    display: block;
-    margin-top: 0.75rem;
-    font-weight: 600;
-}
-
-input,
-textarea {
+input, textarea {
     width: 100%;
     padding: 0.5rem;
-    font: inherit;
+    font-style: "Google Sans", sans-serif;
     border: 1px solid #8a94a0;
 }
+
+.card-button-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-filter input {
+    color: #333;
+    background-color: #f6f7f9;
+}
+
+.search-filter label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.book-card p {
+    line-height: 1.4rem;
+    margin: 0;
+    font-family: monospace;
+    color: #333;
+}
+
+.book-card h2 {
+    margin: 0 0 1rem;
+}
+
+
+
